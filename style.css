@@ -1,0 +1,351 @@
+/* Keep element sizing predictable across the app. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #24313a;
+  --muted: #64737b;
+  --teal: #167b73;
+  --teal-dark: #105c57;
+  --line: #dce5e4;
+  --paper: #ffffff;
+  --canvas: #f2f7f6;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+.site-header {
+  padding: 3.25rem 1.25rem 3.5rem;
+  background: linear-gradient(135deg, #145f5b, #218b80);
+  color: #fff;
+}
+
+.header-content {
+  width: min(100%, 700px);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.3rem;
+  color: #bfe9df;
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.3rem;
+  font-size: clamp(2.4rem, 7vw, 3.35rem);
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.tagline {
+  margin-bottom: 0;
+  color: #e4f5f1;
+  font-size: 1.05rem;
+}
+
+main {
+  display: grid;
+  gap: 1.25rem;
+  width: min(calc(100% - 2rem), 700px);
+  margin: -1.4rem auto 3rem;
+}
+
+.panel {
+  padding: 1.5rem;
+  border: 1px solid #e4ecea;
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 12px 32px rgb(31 69 65 / 6%);
+}
+
+h2 {
+  margin-bottom: 1.1rem;
+  font-size: 1.28rem;
+  letter-spacing: -0.025em;
+}
+
+#note-form {
+  display: flex;
+  align-items: end;
+  gap: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.note-field {
+  flex: 1 1 auto;
+}
+
+.category-field {
+  flex: 0 0 150px;
+}
+
+label {
+  color: #41515a;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #cddbd8;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.94rem;
+}
+
+input::placeholder {
+  color: #92a09f;
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 3px solid rgb(22 123 115 / 22%);
+  outline-offset: 2px;
+  border-color: var(--teal);
+}
+
+button {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--teal);
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+button:hover {
+  background: var(--teal-dark);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#error-message {
+  min-height: 1.35rem;
+  margin: 0.55rem 0 0;
+  color: #ad302c;
+  font-size: 0.88rem;
+}
+
+.notes-heading-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.notes-heading-row h2 {
+  margin-bottom: 0;
+}
+
+.section-eyebrow {
+  color: var(--teal);
+  font-size: 0.68rem;
+}
+
+#note-count {
+  margin-bottom: 0.1rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.notes-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clear-button {
+  min-height: 34px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #e7c8c6;
+  background: #fff;
+  color: #9f302c;
+  font-size: 0.8rem;
+}
+
+.clear-button:hover {
+  background: #f7e8e7;
+}
+
+.search-field {
+  margin-top: 1.2rem;
+}
+
+#notes-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-card {
+  margin: 0;
+  padding: 1rem 1rem 0.95rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid #167b73;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.category-personal {
+  border-left-color: #16877e;
+}
+
+.category-work {
+  border-left-color: #a94350;
+}
+
+.category-study {
+  border-left-color: #3974c5;
+}
+
+.note-topline,
+.note-bottomline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.note-text {
+  margin: 0.65rem 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.category-label {
+  display: inline-flex;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: #e6f4f1;
+  color: #11675f;
+  font-size: 0.73rem;
+  font-weight: 750;
+}
+
+.category-work .category-label {
+  background: #f8e9eb;
+  color: #92313c;
+}
+
+.category-study .category-label {
+  background: #e9f0fb;
+  color: #2b5fa7;
+}
+
+.note-date {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.delete-button {
+  min-height: 34px;
+  padding: 0.35rem 0.65rem;
+  background: #f7e8e7;
+  color: #9f302c;
+  font-size: 0.8rem;
+}
+
+.delete-button:hover {
+  background: #efd1cf;
+}
+
+.empty-message {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed #cddbd8;
+  border-radius: 10px;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer {
+  padding: 1.5rem 1rem 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  main {
+    width: min(calc(100% - 1.25rem), 700px);
+    margin-top: -1.15rem;
+  }
+
+  .panel {
+    padding: 1.15rem;
+    border-radius: 13px;
+  }
+
+  #note-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .category-field {
+    flex-basis: auto;
+  }
+
+  #note-form button {
+    width: 100%;
+  }
+
+  .notes-heading-row {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .notes-actions {
+    flex-wrap: wrap;
+  }
+}

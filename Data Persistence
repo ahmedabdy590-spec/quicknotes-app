@@ -1,0 +1,31 @@
+const STORAGE_KEY = "quicknotes-notes";
+
+function loadNotes() {
+  try {
+    const savedNotes = JSON.parse(
+      localStorage.getItem(STORAGE_KEY) || "[]"
+    );
+
+    return Array.isArray(savedNotes) ? savedNotes : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveNotes() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+}
+
+// Load saved notes when the app starts.
+let notes = loadNotes();
+// After adding a note:
+notes.unshift(newNote);
+saveNotes();
+
+// After deleting a note:
+notes = notes.filter((note) => note.id !== idToDelete);
+saveNotes();
+
+// After clearing all notes:
+notes = [];
+saveNotes();
